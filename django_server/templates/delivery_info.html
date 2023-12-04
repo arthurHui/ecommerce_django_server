@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK Warm Home Delivery</title>
+    <style>
+        .deliveryButton {
+            color: #ffffff;
+            height: 40px;
+            width: 150px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            background: #4096ff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="border: 1px solid #999; width: 500px; margin: auto; padding: 20px;">
+        <div style="display: flex; justify-content: space-between;">
+            <div>
+                <img src="https://diy-system.s3.us-west-1.amazonaws.com/low/8345487e-14f6-4bbd-90ad-86cdcd03bcd3_1691933079174.714.png"
+                    width="75" />
+            </div>
+            <div style="text-align: right; width: 100%;">
+                <div>訂單號碼:#{{order_refId}}</div>
+            </div>
+        </div>
+        <br />
+        <h2 style="text-align: center;">
+            你的訂單正在運送中
+        </h2>
+        <br />
+        <div style="text-align: center;">
+            你好， {{user_name}},
+        </div>
+        <br />
+        <div style="text-align: center;">你的訂單已離開我們的倉庫，開始前往您的地址</div>
+        <br />
+        <div style="text-align: center;">通過下面的跟踪鏈接關注您的訂單。</div>
+        <div style="text-align: center;">請等待最多 6 小時才能獲得跟踪信息。</div>
+        <br />
+        <div style="padding-bottom: 10px; border-bottom: 1px solid #000; text-align: center;">
+            <a href={{delivery_url}} target="_blank">
+                <button class="deliveryButton">追踪運單</button>
+            </a>
+        </div>
+        <table style="width:100%">
+            <tr>
+                <th style="width: 60px;">圖片</th>
+                <th>名稱</th>
+                <th>數量</th>
+            </tr>
+            {% for value in order %}
+            <tr>
+                <td><img width="60px" src={{value.image}} /></td>
+                <td>
+                    <div>{{value.product_title}}</div>
+                    <div>
+                        <span>{{value.title}}</span>
+                        {% if value.sub_option is not None %}
+                        <span style="margin-left: 5px;">{{value.sub_option.title}}</span>
+                        {% endif %}
+                    </div>
+                </td>
+                <td style="width: 60px; text-align: center;">{{value.added_quantity}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div style="text-align: center;">
+            <div>按下面按鍵可前往查看更多資訊</div>
+            <br />
+            <div>
+                <a href={{order_url}} target="_blank">
+                    <button
+                        style="background-color: #4096ff; color: #ffffff; border: none; padding: 10px 20px; cursor: pointer;">
+                        查看更多
+                    </button>
+                </a>
+            </div>
+        </div>
+        <br />
+        <div>感謝您的耐心支持與喜愛！</div>
+        <div>HK Warm Home</div>
+    </div>
+</body>
+
+</html>
