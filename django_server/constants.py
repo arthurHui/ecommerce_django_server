@@ -1,1 +1,1 @@
-# WEBSITE_URL = "http://localhost:3000"
+WEBSITE_URL = "http://localhost:3000"
